@@ -65,6 +65,7 @@ js 相关：
 autojs 相关：
 
 开发问题：
+
 - 如何更加快速的定位到元素？控件，定位，还有啥手法？寻找控件的方式，代码打印，利用 autojsx 自带的布局工具。
 - 寻找控件的方式？？？？？自带的布局分析，代码打印，还有啥？
 - [不可点击的图片控件的点击](https://blog.csdn.net/snailuncle2/article/details/115495493)
@@ -72,6 +73,7 @@ autojs 相关：
 - 模块化的分包问题？不确定原因，感觉是 jvm-npm.js 的事情导致的。
 
 调试问题：
+
 - [模块化 autojs 时候需要将文件保存到设备](https://github.com/kangour/autojs_sdk/issues/2)
 - autojsx 黑屏断连接
 - debug 问题。自动化更新文件到设备
@@ -82,6 +84,7 @@ autojs 相关：
 - 控制台退出应用隐藏
 
 部署问题：
+
 - [autojsx 打包和编译](https://blog.csdn.net/weixin_40629244/article/details/126067770)
 - [定时任务](https://easydoc.net/doc/39405522/qhmgVc4G/RcDK0lDF) 还有 android [Tasker 应用](https://www.bilibili.com/video/BV15W411P719/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
 - 如何加密应用防止被盗用
@@ -99,6 +102,7 @@ autojs 相关：
 - [云控](https://www.bilibili.com/video/BV1s64y1o7EQ/?spm_id_from=333.337.search-card.all.click)
 - [遍历点击](https://www.bilibili.com/video/BV1pa4y177tY/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
 - [随机滑动](https://github.com/hyue418/taobao-11-11/blob/master/淘宝+京东双十一活动脚本.js)
+
 ## 5. 卷王 vs 海王
 
 - 核心难点
@@ -107,3 +111,28 @@ autojs 相关：
   - [冰狐智能辅助](https://www.bilibili.com/video/BV1y14y1376n/?t=468&spm_id_from=333.1007.seo_video.first&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
   - [hamibot](https://hamibot.com/)
 - 变现思考
+
+## tips
+
+1. 如何分析页面？
+
+- 一般的可见组件，直接使用，布局分析就好了。（autojs 自带的）
+- 对于不可见组件，使用代码调试寻找。
+
+2. 如何编写复杂逻辑？
+
+多层嵌套循环这样的逻辑，是比较复杂的。基本可以说是一个共识。大概 3 层循环的逻辑，就会开始烧脑。
+
+如果，以顺序的方式，从最外层，不断的向内编写。这种方式，会需要一直关注各层循环和小细节。脑力消耗严重。姿势不对，难度较高。
+
+此时，需要拆解单元。反向推进任务。从最具体的最内层的处理开始，以一个页面为一个单元，逐渐向外推进。这样，在整个任务编写的过程中，就会一直保持一个最简化的思考。
+
+3. 逻辑套路抽离？
+   编写基本逻辑的时候，大多数都是相似重复的。比如：
+
+   1. 判断是否进入当前页面 （如果需要考虑程序的健壮性，这个操作必须有。然而，不想费事的话，大多数只需要，sleep 一下即可）
+   2. 寻找控件。进行日志监控，找不到告警。（这样容易发现，程序隐藏的稳定性问题，如，页面结构变化 ，网络问题，布局渲染问题）
+   3. 操作控件。
+   4. 返回，或者 loop 前面的。
+
+4. 稳定性问题？
