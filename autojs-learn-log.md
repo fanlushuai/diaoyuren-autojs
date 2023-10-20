@@ -45,8 +45,8 @@
 
 活跃 AQ 社区：
 
-- https://github.com/kkevsekk1/AutoX/issues?page=2&q=is%3Aissue+is%3Aopen
-- http://www.autoxjs.com/category/4/bug-%E9%97%AE%E9%A2%98-%E5%BB%BA%E8%AE%AE
+- https://github.com/kkevsekk1/AutoX/issues?page=2&q=is:issue+is:open
+- http://www.autoxjs.com/category/4/bug-问题-建议
 
 问题积累：
 
@@ -75,7 +75,7 @@ autojs 相关：
 - [模块化 autojs 时候需要将文件保存到设备](https://github.com/kangour/autojs_sdk/issues/2)
 - autojsx 黑屏断连接
 - debug 问题。自动化更新文件到设备
-- [debug，单步调试](https://juejin.cn/s/vscode%E5%8D%95%E6%AD%A5%E8%B0%83%E8%AF%95autojs)
+- [debug，单步调试](https://juejin.cn/s/vscode单步调试autojs)
 - 悬浮控制台
 - [停止脚本](https://blog.csdn.net/snailuncle2/article/details/115090390)
 - [控制台](https://easydoc.net/doc/39405522/qhmgVc4G/1m6aJEQR)
@@ -97,7 +97,8 @@ autojs 相关：
 - [微信好友](https://github.com/xiaoguyu/handsFree/blob/main/wechatFriend/main.js)
 - [tasker 配合 autojs 实现早上 5 点自动解锁手机并签到打卡赚积分](https://www.bilibili.com/video/BV1zG4y197rX/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
 - [云控](https://www.bilibili.com/video/BV1s64y1o7EQ/?spm_id_from=333.337.search-card.all.click)
-
+- [遍历点击](https://www.bilibili.com/video/BV1pa4y177tY/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
+- [随机滑动](https://github.com/hyue418/taobao-11-11/blob/master/淘宝+京东双十一活动脚本.js)
 ## 5. 卷王 vs 海王
 
 - 核心难点
