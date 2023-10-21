@@ -76,6 +76,8 @@ autojs 相关：
 - [不可点击的图片控件的点击](https://blog.csdn.net/snailuncle2/article/details/115495493)
 - [稳定的判断控件存在并点击，防止卡死？](https://github.com/SuperMonster003/Ant-Forest/issues/11)
 - 模块化的分包问题？不确定原因，感觉是 jvm-npm.js 的事情导致的。
+- [自定义悬浮窗](https://www.6hu.cc/archives/41311.html)
+- [控制台美化](https://zhuanlan.zhihu.com/p/365424480)
 
 调试问题：
 

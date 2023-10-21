@@ -180,7 +180,7 @@ pinLog.init = function () {
           textSize="30sp"
           w="wrap_content"
           h="wrap_content"
-          textColor="#ffffff"
+          textColor="#C0FF3E"
           padding="6"
           id="text"
         ></text>
@@ -195,8 +195,8 @@ pinLog.init = function () {
     var dh = device.height;
     // 悬浮窗置于底部中央
     var x = (dw - ww) / 2;
-    var y = dh - wh;
-    console.log("固定日志位置：" + x + "---" + y);
+    var y = (dh - wh)*3/4;
+    // console.log("固定日志位置：" + x + "---" + y);
     w.setPosition(x, y);
   });
 

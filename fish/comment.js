@@ -25,7 +25,7 @@ var stateLog = {};
 // stateLog.countAll = 0;
 stateLog.countSolved = 0;
 stateLog.msg = function () {
-  return "已处理" + this.countSolved;
+  return "已评论 ： " + this.countSolved;
 };
 stateLog.addCountSolved = function (count) {
   this.countSolved += count;
