@@ -78,6 +78,7 @@ autojs 相关：
 - 模块化的分包问题？不确定原因，感觉是 jvm-npm.js 的事情导致的。
 - [自定义悬浮窗](https://www.6hu.cc/archives/41311.html)
 - [控制台美化](https://zhuanlan.zhihu.com/p/365424480)
+- 翻页控件，也需要sleep。容易被忽略，导致元素找不到！！！！
 
 调试问题：
 
