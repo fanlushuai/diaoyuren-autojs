@@ -1,13 +1,16 @@
 //清理初始化环境
-const { cleanInit, reloadApp, l, netDelay } = require("util.js"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
+const { cleanInit, reloadApp, l, netDelay, aWhileExit } = require("util.js"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
+const { genComment } = require("commentGen.js");
 reloadApp("钓鱼人");
 cleanInit("钓鱼人");
 
-var config={}
-config.timeLimit=1
-config.timeLimitUnit='天' //天，小时，分钟
-config.comment='鱼情太难了'
-config.commentDebugMode= true // 别让在测试的时候真实提交
+var storage = storages.create("diaoyuren");
+
+var config = {};
+config.timeLimit = 1;
+config.timeLimitUnit = "天"; //天，小时，分钟
+config.comment = "鱼情太难了";
+config.commentDebugMode = false; // 别让在测试的时候真实提交
 
 // 找到tab
 className("Button").clickable().text("本地").findOne().click();
@@ -20,7 +23,7 @@ text("最新").waitFor();
 // 测试翻页控件方法
 // id('lrvhRecyclerView').findOne().scrollForward()
 
-var yetSolveArry = [];
+// var yetSolveArry = [];
 
 pagesScroll();
 
@@ -28,7 +31,7 @@ function pagesScroll() {
   while (true) {
     page();
     id("lrvhRecyclerView").findOne().scrollForward();
-    console.log('翻页===')
+    console.log("翻页===");
   }
 }
 
@@ -40,6 +43,8 @@ function page() {
   var titleEles = id("title_view").className("android.widget.TextView").find();
 
   // 遍历所有帖子，进行判断，点击
+  var yetSovleInOnePageCount = 0;
+  var notUserPostCount = 0;
   for (var titleEle of titleEles) {
     //每一个帖子处理完，等待返回
     text("最新").waitFor();
@@ -58,6 +63,7 @@ function page() {
     if (!time) {
       console.warn("不包含 time 元素，不是用户贴---" + title);
       //不是用户帖子，直接跳过
+      notUserPostCount++;
       continue;
     }
 
@@ -66,14 +72,20 @@ function page() {
     if (overLimit(config.timeLimit, config.timeLimitUnit, time.text())) {
       //超过时间限制，直接结束
       console.warn("超过时间限制，跳出循环");
-      // 是不是应该，直接退出脚本？ 
-      exit()
+      // 是不是应该，直接退出脚本？
+      aWhileExit();
       // break;
     }
 
     //3. yetSolveArry。已经点击，直接跳过
-    if (yetSolveArry.indexOf(title) > -1) {
+    if (storage.contains(title)) {
+      // if (yetSolveArry.indexOf(title) > -1) {
       console.warn("已经点击过，跳过" + title);
+      if (++yetSovleInOnePageCount == titleEles.size() - notUserPostCount) {
+        //本页全部都处理了。说明后面的大概率都已经处理了。直接停止
+        console.warn("本业全部都是陈旧的，停止运行");
+        aWhileExit();
+      }
       continue; //todo 优化
     }
 
@@ -95,19 +107,23 @@ function post(title) {
   sleep(random(500, 1000));
 
   //输入 评论
-  id("et_chat").setText(config.comment);
+  var comment = genComment(config.comment);
+  id("et_chat").setText(comment);
   sleep(random(500, 1000));
 
-  console.log("发表评论");
+  console.log("发表评论->" + comment);
 
   // 提交评论
-  id("btn_send").click()
+  if (!config.commentDebugMode) {
+    id("btn_send").click();
+  }
   // 等待评论成功
   sleep(random(2000, 2100));
   // text('评论发表成功').waitFor()
 
   //存储点击列表
-  yetSolveArry.push(title);
+  // yetSolveArry.push(title);
+  storage.put(title, "");
 
   back();
   sleep(random(2000, 2100));
@@ -152,7 +168,7 @@ function overLimit(timeLimit, unit, timeStr) {
   return false;
 }
 
-// 跳出列表后，翻页了，导致元素有问题了。？？？？？什么情况。
+// 跳出列表后，翻页了，导致元素有问题了。？？？？？什么情况。--- 好像是因为翻页控件的翻页动作，需要点击到帖子尾部，要不然还是在这一页。
 // 02:58:30.018/D: 15小时前
 // 02:58:34.562/D: 发表评论
 // 02:58:40.016/I: 开始处理帖子->周六有去小清河钓大板鲫去吗？

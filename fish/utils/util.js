@@ -148,6 +148,12 @@ const l = function (str){
   log('@@@@@@ -> '+str);
 };
 
+const aWhileExit= function(){
+  console.warn("等待 8s 自动退出")
+  sleep(8000)
+  exit()
+}
+
 // 模块化 https://www.freecodecamp.org/chinese/news/module-exports-how-to-export-in-node-js-and-javascript/
 module.exports = {
   printEles,
@@ -158,4 +164,5 @@ module.exports = {
   collectionContains,
   reloadApp,
   l,
+  aWhileExit,
 };
