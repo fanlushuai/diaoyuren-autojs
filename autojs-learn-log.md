@@ -64,6 +64,8 @@ js 相关：
 - [模块化](https://www.freecodecamp.org/chinese/news/modules-in-javascript/)
 
 - [commonjs 规范](https://javascript.ruanyifeng.com/nodejs/module.html)
+- [闭包](https://juejin.cn/post/6964579731387711501)
+- [闭包的优缺点](https://blog.csdn.net/ruotong0418/article/details/122220146)
 
 autojs 相关：
 
@@ -105,6 +107,8 @@ autojs 相关：
 - [云控](https://www.bilibili.com/video/BV1s64y1o7EQ/?spm_id_from=333.337.search-card.all.click)
 - [遍历点击](https://www.bilibili.com/video/BV1pa4y177tY/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
 - [随机滑动](https://github.com/hyue418/taobao-11-11/blob/master/淘宝+京东双十一活动脚本.js)
+- [游戏脚手架](https://gitee.com/zjh336/hz_autojs_game_script)
+- [微信好友僵尸粉](https://github.com/L8426936/CleanUpWeChatZombieFans)
 
 ## 5. 卷王 vs 海王
 
@@ -114,6 +118,9 @@ autojs 相关：
   - [冰狐智能辅助](https://www.bilibili.com/video/BV1y14y1376n/?t=468&spm_id_from=333.1007.seo_video.first&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
   - [hamibot](https://hamibot.com/)
 - 变现思考
+
+- [lamda](https://github.com/rev1si0n/lamda)
+- [github autojs topic](https://github.com/topics/autojs)
 
 ## tips
 

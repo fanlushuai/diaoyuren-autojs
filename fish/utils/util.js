@@ -78,13 +78,13 @@ const cleanInit = function (appName) {
   keepAlive(); // 保持常亮，防止调试期间断开连接
 };
 
-const reloadApp=function(appName){
+const reloadApp = function (appName) {
   killApp(appName);
   auto.waitFor();
   app.launchApp(appName);
   console.log("打开-" + appName);
   keepAlive(); // 保持常亮，防止调试期间断开连接
-}
+};
 
 const stopOther = function () {
   engines.all().map((ScriptEngine) => {
@@ -144,15 +144,60 @@ const keepAlive = function () {
   device.setBrightness(2);
 };
 
-const l = function (str){
-  log('@@@@@@ -> '+str);
+const l = function (str) {
+  log("@@@@@@ -> " + str);
 };
 
-const aWhileExit= function(){
-  console.warn("等待 8s 自动退出")
-  sleep(8000)
-  exit()
-}
+const aWhileExit = function () {
+  console.warn("等待 8s 自动退出");
+  sleep(8000);
+  exit();
+};
+
+var pinLog = {};
+pinLog.w;
+pinLog.init = function () {
+  if (pinLog.w){
+    return;
+  }
+
+  if (!floaty.checkPermission()) {
+    // 没有悬浮窗权限，提示用户并跳转请求
+    toast(
+      "本脚本需要悬浮窗权限来显示悬浮窗，请在随后的界面中允许并重新运行本脚本。"
+    );
+    floaty.requestPermission();
+    exit();
+  } else {
+    toastLog("已有悬浮窗权限");
+  }
+
+  //显示一个悬浮窗。显示文本  。修改文本内容，要去里面的id
+  var w = floaty.window(
+    <frame gravity="center">
+      <frame gravity="center">
+        <text
+          textSize="30sp"
+          w="wrap_content"
+          h="wrap_content"
+          textColor="#ffffff"
+          padding="6"
+          id="text"
+        ></text>
+      </frame>
+    </frame>
+  );
+
+  pinLog.w = w;
+};
+
+pinLog.log = function (msg) {
+  pinLog.init()
+  var w=this.w;
+  ui.run(function(){
+    w.text.setText(msg);
+  });
+};
 
 // 模块化 https://www.freecodecamp.org/chinese/news/module-exports-how-to-export-in-node-js-and-javascript/
 module.exports = {
@@ -165,4 +210,5 @@ module.exports = {
   reloadApp,
   l,
   aWhileExit,
+  pinLog,
 };

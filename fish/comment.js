@@ -1,6 +1,14 @@
 //清理初始化环境
-const { cleanInit, reloadApp, l, netDelay, aWhileExit } = require("util.js"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
+const {
+  cleanInit,
+  reloadApp,
+  l,
+  netDelay,
+  aWhileExit,
+  pinLog,
+} = require("util.js"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
 const { genComment } = require("commentGen.js");
+
 reloadApp("钓鱼人");
 cleanInit("钓鱼人");
 
@@ -10,7 +18,18 @@ var config = {};
 config.timeLimit = 1;
 config.timeLimitUnit = "天"; //天，小时，分钟
 config.comment = "鱼情太难了";
-config.commentDebugMode = false; // 别让在测试的时候真实提交
+config.commentDebugMode = true; // 别让在测试的时候真实提交
+// config.commentDebugMode = false; // 别让在测试的时候真实提交
+
+var stateLog = {};
+// stateLog.countAll = 0;
+stateLog.countSolved = 0;
+stateLog.msg = function () {
+  return "已处理" + this.countSolved;
+};
+stateLog.addCountSolved = function (count) {
+  this.countSolved += count;
+};
 
 // 找到tab
 className("Button").clickable().text("本地").findOne().click();
@@ -45,6 +64,10 @@ function page() {
   // 遍历所有帖子，进行判断，点击
   var yetSovleInOnePageCount = 0;
   var notUserPostCount = 0;
+
+  // stateLog.addCountAll(titleEles.size()); 因为翻页之后，会出现重复的内容。导致计数重复。所以，不再次计数。
+  pinLog.log(stateLog.msg())
+
   for (var titleEle of titleEles) {
     //每一个帖子处理完，等待返回
     text("最新").waitFor();
@@ -93,6 +116,9 @@ function page() {
     titleEle.click();
     netDelay();
 
+    stateLog.addCountSolved(1);
+    pinLog.log(stateLog.msg())
+
     post(title);
   }
 }
@@ -100,8 +126,9 @@ function page() {
 function post(title) {
   netDelay();
   //等待进入帖子页面
-  text("全部评论").waitFor();
-
+  // text("加关注").waitFor();
+  textMatches("(加关注|已关注)").waitFor();
+  sleep(random(500, 1000));
   //点击->回复组件
   id("rll_reply").click();
   sleep(random(500, 1000));
