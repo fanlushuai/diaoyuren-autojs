@@ -112,7 +112,7 @@ const printEles = function () {
   }
 
   // 第二部查找所有控件
-  let root = find();
+  var root = find();
 
   // 第三步 调用递归方法
   queryList(root);
@@ -157,7 +157,7 @@ const aWhileExit = function () {
 var pinLog = {};
 pinLog.w;
 pinLog.init = function () {
-  if (pinLog.w){
+  if (pinLog.w) {
     return;
   }
 
@@ -169,10 +169,10 @@ pinLog.init = function () {
     floaty.requestPermission();
     exit();
   } else {
-    toastLog("已有悬浮窗权限");
+    // toastLog("已有悬浮窗权限");
   }
 
-  //显示一个悬浮窗。显示文本  。修改文本内容，要去里面的id
+  //显示一个悬浮窗。显示文本  。修改文本内容，id="text"
   var w = floaty.window(
     <frame gravity="center">
       <frame gravity="center">
@@ -188,13 +188,25 @@ pinLog.init = function () {
     </frame>
   );
 
+  ui.run(function () {
+    var ww = w.getWidth();
+    var wh = w.getHeight();
+    var dw = device.width;
+    var dh = device.height;
+    // 悬浮窗置于底部中央
+    var x = (dw - ww) / 2;
+    var y = dh - wh;
+    console.log("固定日志位置：" + x + "---" + y);
+    w.setPosition(x, y);
+  });
+
   pinLog.w = w;
 };
 
 pinLog.log = function (msg) {
-  pinLog.init()
-  var w=this.w;
-  ui.run(function(){
+  pinLog.init();
+  var w = this.w;
+  ui.run(function () {
     w.text.setText(msg);
   });
 };

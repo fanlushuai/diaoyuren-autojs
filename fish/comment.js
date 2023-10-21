@@ -44,6 +44,8 @@ text("最新").waitFor();
 
 // var yetSolveArry = [];
 
+pinLog.log(stateLog.msg())
+
 pagesScroll();
 
 function pagesScroll() {
@@ -91,7 +93,7 @@ function page() {
     }
 
     //2. 判断是否超过时间限制
-    console.log(time.text());
+    console.log(time.text().replace('< >/< ><img>< >','  '));
     if (overLimit(config.timeLimit, config.timeLimitUnit, time.text())) {
       //超过时间限制，直接结束
       console.warn("超过时间限制，跳出循环");
