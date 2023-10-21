@@ -15,6 +15,17 @@ cleanInit("钓鱼人");
 var storage = storages.create("diaoyuren");
 
 var config = {};
+config.citys = [
+  "北京",
+  "上海",
+  "广州",
+  "深圳",
+  "苏州",
+  "成都",
+  "东莞",
+  "无锡",
+  "杭州",
+];
 config.timeLimit = 1;
 config.timeLimitUnit = "天"; //天，小时，分钟
 config.comment = "鱼情太难了";
@@ -31,28 +42,48 @@ stateLog.addCountSolved = function (count) {
   this.countSolved += count;
 };
 
+pinLog.log(stateLog.msg());
+
 // 找到tab
 className("Button").clickable().text("本地").findOne().click();
 
-// 找到 最新
-text("最新").waitFor();
+config.citys.forEach((c) => {
+  changeCity(c)
+  city();
+});
 
-// 找翻页控件方法
-// log(scrollable().find())
-// 测试翻页控件方法
-// id('lrvhRecyclerView').findOne().scrollForward()
+function changeCity(city){
+  console.warn("切换城市-> "+city)
 
-// var yetSolveArry = [];
+  id("mLlLocalLocation").waitFor()
+  id("mLlLocalLocation").findOne().click();
+  id("tb_root").waitFor();
+  text(city).findOne().click();
+  sleep(1000, 2000);
+}
 
-pinLog.log(stateLog.msg())
+function city() {
+  // 找到 最新
+  text("最新").waitFor();
 
-pagesScroll();
+  // 找翻页控件方法
+  // log(scrollable().find())
+  // 测试翻页控件方法
+  // id('lrvhRecyclerView').findOne().scrollForward()
+
+  // var yetSolveArry = [];
+
+  pagesScroll();
+}
 
 function pagesScroll() {
   while (true) {
-    page();
-    id("lrvhRecyclerView").findOne().scrollForward();
-    console.log("翻页===");
+    if(page()){
+      id("lrvhRecyclerView").findOne().scrollForward();
+      console.log("翻页===");
+    }else{
+      break
+    }
   }
 }
 
@@ -68,7 +99,7 @@ function page() {
   var notUserPostCount = 0;
 
   // stateLog.addCountAll(titleEles.size()); 因为翻页之后，会出现重复的内容。导致计数重复。所以，不再次计数。
-  pinLog.log(stateLog.msg())
+  pinLog.log(stateLog.msg());
 
   for (var titleEle of titleEles) {
     //每一个帖子处理完，等待返回
@@ -93,12 +124,13 @@ function page() {
     }
 
     //2. 判断是否超过时间限制
-    console.log(time.text().replace('< >/< ><img>< >','  '));
+    console.log(time.text().replace("< >/< ><img>< >", "  "));
     if (overLimit(config.timeLimit, config.timeLimitUnit, time.text())) {
       //超过时间限制，直接结束
       console.warn("超过时间限制，跳出循环");
       // 是不是应该，直接退出脚本？
-      aWhileExit();
+      // aWhileExit();
+      return false;
       // break;
     }
 
@@ -109,7 +141,8 @@ function page() {
       if (++yetSovleInOnePageCount == titleEles.size() - notUserPostCount) {
         //本页全部都处理了。说明后面的大概率都已经处理了。直接停止
         console.warn("本业全部都是陈旧的，停止运行");
-        aWhileExit();
+        // aWhileExit();
+        return false;
       }
       continue; //todo 优化
     }
@@ -119,10 +152,11 @@ function page() {
     netDelay();
 
     stateLog.addCountSolved(1);
-    pinLog.log(stateLog.msg())
+    pinLog.log(stateLog.msg());
 
     post(title);
   }
+  return true;
 }
 
 function post(title) {
