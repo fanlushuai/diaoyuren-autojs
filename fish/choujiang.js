@@ -3,7 +3,7 @@
  */
 
 //清理初始化环境
-const { cleanInit, reloadApp, mutilClick, netDelay } = require("util.js"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
+const { cleanInit, reloadApp, mutilClick, netDelay } = require("./utils/util"); //!!!!! 特别注意，使用模块化，需要保存文件到指定设备。//这个路径，不确定原因，感觉是jvm-npm.js的事情导致的。
 
 reloadApp("钓鱼人");
 cleanInit("钓鱼人");

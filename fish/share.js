@@ -7,7 +7,7 @@ const {
   mutilClick,
   aWhileExit,
   backFromWeChat,
-} = require("util");
+} = require("./utils/util");
 
 var s = storages.create("diaoyuren-share");
 
