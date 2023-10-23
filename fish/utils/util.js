@@ -195,7 +195,7 @@ pinLog.init = function () {
     var dh = device.height;
     // 悬浮窗置于底部中央
     var x = (dw - ww) / 2;
-    var y = (dh - wh)*3/4;
+    var y = ((dh - wh) * 3) / 4;
     // console.log("固定日志位置：" + x + "---" + y);
     w.setPosition(x, y);
   });
@@ -211,6 +211,40 @@ pinLog.log = function (msg) {
   });
 };
 
+const clickUnclickble = function (ele) {
+  var b = ele.bounds();
+  click(b.centerX(), b.centerY());
+};
+
+const getBrother = function (ele, textStr, id) {
+  if (text != "" && text != null) {
+    return ele.parent().children().findOne(text(textStr));
+  } else if (id != "" && id != null) {
+    return ele.parent().children().findOne(text(id));
+  }
+  return null;
+};
+
+const getOtherBrother = function (ele, textStrArr) {
+  var eles = ele.parent().children();
+  for (var ele of eles) {
+    var include = false;
+    for (var textStr of textStrArr) {
+      // log(textStr + "dddd" + ele.text());
+      if (textStr == ele.text()) {
+        include = true;
+        break;
+      }
+    }
+
+    if (!include) {
+      return ele;
+    }
+  }
+
+  return null;
+};
+
 // 模块化 https://www.freecodecamp.org/chinese/news/module-exports-how-to-export-in-node-js-and-javascript/
 module.exports = {
   printEles,
@@ -223,4 +257,7 @@ module.exports = {
   l,
   aWhileExit,
   pinLog,
+  getOtherBrother,
+  getBrother,
+  clickUnclickble,
 };

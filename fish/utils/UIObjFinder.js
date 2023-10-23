@@ -9,6 +9,7 @@ cleanInit("钓鱼人")
 // printEles()
 
 // 寻找页面中的滚动控件
-log(scrollable().find())
+// log(scrollable().find())
+log(id("acpb_share_view").find())
 // className('androidx.viewpager.widget.ViewPage').findOne().scrollDown()
-id('lrvhRecyclerView').findOne().scrollForward()
+// id('lrvhRecyclerView').findOne().scrollForward()

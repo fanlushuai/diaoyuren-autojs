@@ -16,7 +16,8 @@ var storage = storages.create("diaoyuren");
 
 var config = {};
 config.citys = [
-  // "北京",
+  "北京",
+  "佛山",
   "上海",
   "广州",
   "深圳",
