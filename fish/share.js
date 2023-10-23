@@ -6,13 +6,13 @@ const {
   clickUnclickble,
   mutilClick,
   aWhileExit,
+  backFromWeChat,
 } = require("util");
+
+var s = storages.create("diaoyuren-share");
 
 reloadApp("钓鱼人");
 cleanInit("钓鱼人");
-
-//从最小开始调试开发。
-var s = storages.create("diaoyuren-share");
 dddd();
 
 function share() {
@@ -29,23 +29,24 @@ function share() {
   // log(icons)
 
   for (var icon of icons) {
-    var iconNameCopy = getBrother(icon, "复制链接", "");
+    // var iconNameCopy = getBrother(icon, "复制链接", "");
+    var iconNameCopy = getBrother(icon, "微信", "");
     if (iconNameCopy) {
       sleep(1000);
       iconNameCopy.parent().click();
-      console.info("点击连接以复制");
-      log(getClip());
+      console.info("点击icon");
+      backFromWeChat();
       break;
     }
   }
 
+  sleep(1000);
   back();
   sleep(500, 1000);
   back();
 }
 
 function intoSharePost() {
-  log("dfdfdfd");
   id("tb_title").text("分享精选帖").waitFor();
   id("title_view").waitFor();
 
@@ -54,7 +55,7 @@ function intoSharePost() {
   for (var title of titles) {
     sleep(500, 1000);
     title.click();
-    console.info("点击帖子-> %d", title);
+    console.info("点击帖子-> %d", title.text());
     share();
     s.put(title.text(), ""); //??
   }
@@ -74,7 +75,7 @@ function intoQuWanCheng() {
   }, scrollable().findOne());
 
   //text('分享精选帖').waitFor()//不行呀,屏幕上并没有出现，我艹，只能sleep了
-  sleep(1000);
+  sleep(1500);
   clickUnclickble(quWanChengButton);
 
   //有时候，是未完成。但是检测不到。就通过等待元素超时的方式来检测
@@ -109,7 +110,7 @@ function scrollUntillInScreen(eleFunc, scrollEle) {
 function intoWo() {
   className("Button").clickable().text("我").findOne().click();
   console.log("执行工作流");
-  var works = [{ fuzzyKey: "签到", timeout: 1000 }];
+  var works = [{ fuzzyKey: "签到", timeout: 2000 }];
 
   mutilClick(works);
 }

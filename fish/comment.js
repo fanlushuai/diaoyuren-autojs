@@ -217,7 +217,7 @@ function post(title) {
   back();
   sleep(random(2000, 2100));
 
-  back();
+  // back();
 }
 
 // 时间内，比如 1天。只会处理小时的。3天，只会处理3天以内的

@@ -226,24 +226,52 @@ const getBrother = function (ele, textStr, id) {
 };
 
 const getOtherBrother = function (ele, textStrArr) {
-  var eles = ele.parent().children();
+  log("设备检查：d% d%", device.brand, device.model);
+
+  var eles;
+  if (device.brand == "OPPO" && device.model == "PEXM00") {
+    eles = ele.parent().parent().children(); //
+  } else {
+    eles = ele.parent().children();
+  }
+  
+  // log(eles);
+  
   for (var ele of eles) {
+    // log("节点"+ele)
     var include = false;
     for (var textStr of textStrArr) {
-      // log(textStr + "dddd" + ele.text());
-      if (textStr == ele.text()) {
+      // log(textStr + " 比对 " + ele.text());
+      // 模拟器，和我真机，不一样。一个只需要判断文本，另外一个还需要判断desc属性。
+      if (
+        textStr.trim() == ele.text().trim() ||
+        textStr.trim() == ele.contentDescription
+      ) {
         include = true;
         break;
       }
     }
 
     if (!include) {
+      log("返回兄弟节点d%", ele);
       return ele;
     }
   }
 
+  log("返回兄弟节点d%", "null");
   return null;
 };
+
+function backFromWeChat(appName){
+  //等待微信出现
+  waitForPackage("com.tencent.mm")
+  console.log("微信出现，等待几秒")
+  sleep(2000)
+  // 切换回来
+  app.launchApp(appName);
+  console.log("切回应用 d%",appName)
+  sleep(800)
+}
 
 // 模块化 https://www.freecodecamp.org/chinese/news/module-exports-how-to-export-in-node-js-and-javascript/
 module.exports = {
@@ -260,4 +288,5 @@ module.exports = {
   getOtherBrother,
   getBrother,
   clickUnclickble,
+  backFromWeChat,
 };
