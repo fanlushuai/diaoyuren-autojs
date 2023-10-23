@@ -1,0 +1,10 @@
+{
+    "name": "diaoyuren",
+    "main": "comment.js",
+    "ignore": [
+        "build"
+    ],
+    "packageName": "auh.diaoyuren",
+    "versionName": "1.0.0",
+    "versionCode": 1
+}
