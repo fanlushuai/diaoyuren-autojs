@@ -25,6 +25,7 @@
 - [autoxJS 文档通览](http://doc.autoxjs.com/#/)
 - [github](https://github.com/kkevsekk1/AutoX)
 - [youtube 视频教程](https://www.youtube.com/watch?v=nuV-HvMLHQg&list=PL7Z_iJsi_UxpEgdeFkLT0l5b3NcFtnrBe)
+- [autojs9](https://www.wuyunai.com/docs/v9/migrate-from-api-v1.html#模块与函数对照表)
 
 //todo 汇总，api 主要结构能力，关键细节。
 
@@ -63,6 +64,8 @@ js 相关：
 
 - [模块化](https://www.freecodecamp.org/chinese/news/modules-in-javascript/)
 
+- [模块化的种类](https://www.cnblogs.com/libin-1/p/7127481.html)
+
 - [commonjs 规范](https://javascript.ruanyifeng.com/nodejs/module.html)
 - [闭包](https://juejin.cn/post/6964579731387711501)
 - [闭包的优缺点](https://blog.csdn.net/ruotong0418/article/details/122220146)
@@ -79,6 +82,7 @@ autojs 相关：
 - [自定义悬浮窗](https://www.6hu.cc/archives/41311.html)
 - [控制台美化](https://zhuanlan.zhihu.com/p/365424480)
 - 翻页控件，也需要sleep。容易被忽略，导致元素找不到！！！！
+- [脚本监控超时停止](https://blog.csdn.net/m0_55125030/article/details/116990243)
 
 调试问题：
 
@@ -90,6 +94,12 @@ autojs 相关：
 - [停止脚本](https://blog.csdn.net/snailuncle2/article/details/115090390)
 - [控制台](https://easydoc.net/doc/39405522/qhmgVc4G/1m6aJEQR)
 - 控制台退出应用隐藏
+- [开发技巧文件路径require](https://blog.csdn.net/piyangbo/article/details/126223597)
+-  [Error: Can't resolve relative module ID "./utils/util" when require() is used outside of a module (/android_asset/modules/jvm-npm.js#87)](https://github.com/kkevsekk1/Auto.js-VSCode-Extension.git) vscode调试目录，对应的app上面的，根目录。但是在保存文件夹的时候，连文件夹一起保存了。就会导致，在手机上直接运行时候，可以调用，因为是相对路径。但是在和vscode调试的时候。找不到路径。
+- 使用软链接，改变依赖路径。adb shell ls /storage/emulated/0/鑴氭湰/kuaishou/utils  需要root权限。但是没有呀。烦！！！
+- [编写shell脚本，利用adb来同步](https://github.com/TonyJiangWJ/AutoScriptBase/blob/master/sync_libs_to_device.sh)
+- vscode插件Batch Runner，配合一个batch脚本文件，既可以实现同步！
+
 
 部署问题：
 

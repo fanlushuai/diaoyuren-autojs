@@ -55,7 +55,7 @@ function intoSharePost() {
   for (var title of titles) {
     sleep(500, 1000);
     title.click();
-    console.info("点击帖子-> %d", title.text());
+    console.info("点击帖子-> %s", title.text());
     share();
     s.put(title.text(), ""); //??
   }
