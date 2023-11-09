@@ -81,8 +81,18 @@ autojs 相关：
 - 模块化的分包问题？不确定原因，感觉是 jvm-npm.js 的事情导致的。
 - [自定义悬浮窗](https://www.6hu.cc/archives/41311.html)
 - [控制台美化](https://zhuanlan.zhihu.com/p/365424480)
-- 翻页控件，也需要sleep。容易被忽略，导致元素找不到！！！！
+- [控制台点击穿透](https://blog.csdn.net/snailuncle2/article/details/117958536)
+- 翻页控件，也需要 sleep。容易被忽略，导致元素找不到！！！！
 - [脚本监控超时停止](https://blog.csdn.net/m0_55125030/article/details/116990243)
+- [剪切板内容获取问题](https://zhuanlan.zhihu.com/p/561299463)
+- [找图找色存在的问题](https://blog.csdn.net/qq_25226575/article/details/122935531)
+- 使用 redis，https://github.com/nicolasff/webdis ，基于 http 的 redis，来共享数据。
+- [autojsx 内置函数模块源码参考](https://github.com/kkevsekk1/AutoX/blob/575b355e0e1f160f7deaf147abeaccb448563022/autojs/src/main/assets/modules/__util__.js)
+- **控制窗口会影响截图识图，注意**
+- [自动获取截图权限](https://blog.csdn.net/weixin_52605050/article/details/121875426)
+- [好的入门文章&如何看布局](https://blog.csdn.net/a6892255/article/details/107302369)
+- idMathches的大坑：id指的是全程，所以正则上需要，(.*id) 这样来匹配一个id
+- 同一个会话两次申请截图权限，会卡死
 
 调试问题：
 
@@ -94,12 +104,13 @@ autojs 相关：
 - [停止脚本](https://blog.csdn.net/snailuncle2/article/details/115090390)
 - [控制台](https://easydoc.net/doc/39405522/qhmgVc4G/1m6aJEQR)
 - 控制台退出应用隐藏
-- [开发技巧文件路径require](https://blog.csdn.net/piyangbo/article/details/126223597)
--  [Error: Can't resolve relative module ID "./utils/util" when require() is used outside of a module (/android_asset/modules/jvm-npm.js#87)](https://github.com/kkevsekk1/Auto.js-VSCode-Extension.git) vscode调试目录，对应的app上面的，根目录。但是在保存文件夹的时候，连文件夹一起保存了。就会导致，在手机上直接运行时候，可以调用，因为是相对路径。但是在和vscode调试的时候。找不到路径。
-- 使用软链接，改变依赖路径。adb shell ls /storage/emulated/0/鑴氭湰/kuaishou/utils  需要root权限。但是没有呀。烦！！！
-- [编写shell脚本，利用adb来同步](https://github.com/TonyJiangWJ/AutoScriptBase/blob/master/sync_libs_to_device.sh)
-- vscode插件Batch Runner，配合一个batch脚本文件，既可以实现同步！
-
+- [开发技巧文件路径 require](https://blog.csdn.net/piyangbo/article/details/126223597)
+- [Error: Can't resolve relative module ID "./utils/util" when require() is used outside of a module (/android_asset/modules/jvm-npm.js#87)](https://github.com/kkevsekk1/Auto.js-VSCode-Extension.git) vscode 调试目录，对应的 app 上面的，根目录。但是在保存文件夹的时候，连文件夹一起保存了。就会导致，在手机上直接运行时候，可以调用，因为是相对路径。但是在和 vscode 调试的时候。找不到路径。
+- 使用软链接，改变依赖路径。adb shell ls /storage/emulated/0/鑴氭湰/kuaishou/utils 需要 root 权限。但是没有呀。烦！！！
+- [编写 shell 脚本，利用 adb 来同步](https://github.com/TonyJiangWJ/AutoScriptBase/blob/master/sync_libs_to_device.sh)
+- vscode 插件 Batch Runner，配合一个 batch 脚本文件，既可以实现同步！
+- [adb 连接逍遥模拟器](https://www.cnblogs.com/pu369/p/13184387.html) adb connect 127.0.0.1:21503 adb devices
+- [adb 保持屏幕常亮](https://juejin.cn/s/android%20%E5%B1%8F%E5%B9%95%E5%B8%B8%E4%BA%AE%20adb)
 
 部署问题：
 
@@ -107,7 +118,7 @@ autojs 相关：
 - [定时任务](https://easydoc.net/doc/39405522/qhmgVc4G/RcDK0lDF) 还有 android [Tasker 应用](https://www.bilibili.com/video/BV15W411P719/?spm_id_from=333.337.search-card.all.click&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
 - 如何加密应用防止被盗用
 - 如何防止被检测-- [定制安卓系统](https://github.com/topjohnwu/Magisk) Magisk [定制分析，看不懂](https://bbs.kanxue.com/thread-274100.htm)
-
+- [防检测框架](https://juejin.cn/s/autojs%E9%98%B2%E6%A3%80%E6%B5%8B%E6%A1%86%E6%9E%B6)
   //todo 继续发现问题，解决问题
 
 ## 4. 参考学习案例
@@ -122,6 +133,7 @@ autojs 相关：
 - [随机滑动](https://github.com/hyue418/taobao-11-11/blob/master/淘宝+京东双十一活动脚本.js)
 - [游戏脚手架](https://gitee.com/zjh336/hz_autojs_game_script)
 - [微信好友僵尸粉](https://github.com/L8426936/CleanUpWeChatZombieFans)
+- [常用操作，悬浮窗，等](https://zhuanlan.zhihu.com/p/643798866) 
 
 ## 5. 卷王 vs 海王
 
@@ -139,8 +151,8 @@ autojs 相关：
 
 1. 如何分析页面？
 
-- 一般的可见组件，直接使用，布局分析就好了。（autojs 自带的）
-- 对于不可见组件，使用代码调试寻找。
+- 一般的可见组件，直接使用，布局分析就好了。（autojs 自带的）。直接分析布局，有时候显示不出来，可以多试几次，或者使用代码，log(find())来打印所有的。分析父子关系，可以通过层次分析来进行，通常用来找到可点击的父组件。等。
+- 对于不可见组件，使用代码调试寻找。或者通过层次分析来找。
 
 2. 如何编写复杂逻辑？(这是做事的方法论。很多事情都是通用的。大范围的，只需要大概规划，在实施的时候，一定要从小事做起来。同时要有目标感，保证时间，价值，边界)
 
