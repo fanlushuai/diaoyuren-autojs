@@ -92,7 +92,7 @@ autojs 相关：
 - [自动获取截图权限](https://blog.csdn.net/weixin_52605050/article/details/121875426)
 - [好的入门文章&如何看布局](https://blog.csdn.net/a6892255/article/details/107302369)
 - idMathches 的大坑：id 指的是全程，所以正则上需要，(.\*id) 这样来匹配一个 id
-- 同一个会话两次申请截图权限，会卡死
+- [同一个会话两次申请截图权限，会卡死](https://github.com/SuperMonster003/Ant-Forest/issues/478)
 
 调试问题：
 
@@ -134,6 +134,7 @@ autojs 相关：
 - [游戏脚手架](https://gitee.com/zjh336/hz_autojs_game_script)
 - [微信好友僵尸粉](https://github.com/L8426936/CleanUpWeChatZombieFans)
 - [常用操作，悬浮窗，等](https://zhuanlan.zhihu.com/p/643798866)
+- [亚叔教程](https://github.com/snailuncle/autojsDemo)
 
 ## 5. 卷王 vs 海王
 
@@ -231,3 +232,4 @@ autojs 相关：
    }
 
    ```
+6. 工作流程的控制问题。能不能写一个框架出来？ 使得工作流程拆分的更加细致，以及更加方便编写。并且很多稳定性重复代码，都不用写了。上手容易，快速实现某个autojs功能？？？？
