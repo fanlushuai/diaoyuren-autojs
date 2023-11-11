@@ -93,7 +93,10 @@ autojs 相关：
 - [好的入门文章&如何看布局](https://blog.csdn.net/a6892255/article/details/107302369)
 - idMathches 的大坑：id 指的是全程，所以正则上需要，(.\*id) 这样来匹配一个 id
 - [同一个会话两次申请截图权限，会卡死](https://github.com/SuperMonster003/Ant-Forest/issues/478)
-
+- [检测和开启无障碍](https://www.jianshu.com/p/be568968fea0)
+- [控制台只显示指定级别的日志](https://www.jianshu.com/p/f3085dc17ea1)
+- [UI编写过程中的事件与监听](https://blog.csdn.net/piyangbo/article/details/124946639)
+  
 调试问题：
 
 - [模块化 autojs 时候需要将文件保存到设备](https://github.com/kangour/autojs_sdk/issues/2)
@@ -119,6 +122,9 @@ autojs 相关：
 - 如何加密应用防止被盗用
 - 如何防止被检测-- [定制安卓系统](https://github.com/topjohnwu/Magisk) Magisk [定制分析，看不懂](https://bbs.kanxue.com/thread-274100.htm)
 - [防检测框架](https://juejin.cn/s/autojs%E9%98%B2%E6%A3%80%E6%B5%8B%E6%A1%86%E6%9E%B6)
+- [代码加密](https://www.jsjiami.com/)
+- [打包的app报毒](https://zhuanlan.zhihu.com/p/609949544)
+- [热更新坚果云](https://www.bilibili.com/video/BV1YY41157mm/?spm_id_from=333.788&vd_source=bfb2e76478fd5ddcbcb19e0d566ace5e)
   //todo 继续发现问题，解决问题
 
 ## 4. 参考学习案例
